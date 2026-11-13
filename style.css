@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background-color: #f4f6fa;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    background-color: #172554;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+}
+
+/* Home Section */
+
+.home {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #dbeafe;
+}
+
+.home h1 {
+    color: #172554;
+    font-size: 42px;
+}
+
+.home h2 {
+    color: #2563eb;
+}
+
+.home p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+button {
+    background-color: #172554;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* About Section */
+
+#about {
+    text-align: center;
+    padding: 40px;
+}

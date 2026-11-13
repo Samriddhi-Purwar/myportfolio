@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Samriddhi Purwar | Portfolio</title>
+
+<style>
+
+/* =========================
+   1. GENERAL DESIGN
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background: #050b12;
+    --card: rgba(12, 25, 36, 0.92);
+    --border: #1b3545;
+    --cyan: #42d9e8;
+    --blue: #548dff;
+    --text: #e7f0f5;
+    --muted: #9aafbd;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* =========================
+   2. NETWORK SIDE PATTERN
+========================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 150px;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.65;
+
+    background-image:
+        radial-gradient(circle at 20% 15%, #b8faff 2px, transparent 3px),
+        radial-gradient(circle at 75% 28%, #48c9e8 3px, transparent 4px),
+        radial-gradient(circle at 40% 45%, #8deeff 2px, transparent 3px),
+        radial-gradient(circle at 85% 63%, #51c6e8 3px, transparent 4px),
+        radial-gradient(circle at 30% 82%, #a5f4ff 2px, transparent 3px),
+
+        linear-gradient(35deg, transparent 49.5%, rgba(66,217,232,0.3) 50%, transparent 50.5%),
+        linear-gradient(145deg, transparent 49.5%, rgba(66,217,232,0.25) 50%, transparent 50.5%),
+        linear-gradient(90deg, transparent 49.5%, rgba(66,217,232,0.15) 50%, transparent 50.5%);
+
+    background-size:
+        150px 210px,
+        150px 210px,
+        150px 210px,
+        150px 210px,
+        150px 210px,
+        75px 105px,
+        75px 105px,
+        75px 105px;
+
+    filter: drop-shadow(0 0 5px #31b8d5);
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* Additional background glow */
+
+body {
+    background-image:
+        radial-gradient(ellipse at 50% 5%, rgba(16, 77, 105, 0.22), transparent 55%),
+        radial-gradient(ellipse at 50% 80%, rgba(23, 65, 100, 0.15), transparent 55%);
+    background-color: var(--background);
+}
+
+/* =========================
+   3. NAVIGATION BAR
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 17px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: rgba(5, 11, 18, 0.94);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+}
+
+.navbar h2 {
+    color: white;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 19px;
+}
+
+.nav-links a {
+    color: #a9bdca;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+/* =========================
+   4. MAIN CONTAINER
+========================= */
+
+.container {
+    width: 84%;
+    max-width: 1120px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   5. FAVOURITE QUOTE
+========================= */
+
+.quote-section {
+    padding: 65px 0 25px;
+    text-align: center;
+}
+
+.quote-label {
+    color: var(--cyan);
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.quote-line {
+    width: 65px;
+    height: 3px;
+    margin: 18px auto;
+    background: linear-gradient(90deg, var(--cyan), var(--blue));
+    border-radius: 10px;
+}
+
+.quote-section h2 {
+    max-width: 850px;
+    margin: auto;
+    color: #e0eaf2;
+    font-size: 23px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* =========================
+   6. HERO SECTION
+========================= */
+
+.hero {
+    min-height: 610px;
+    display: flex;
+    align-items: center;
+    padding: 65px 0;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hello {
+    color: var(--cyan);
+    font-family: monospace;
+    font-size: 16px;
+    letter-spacing: 5px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 9vw, 100px);
+    line-height: 1.05;
+    letter-spacing: -4px;
+    font-weight: 900;
+    color: white;
+}
+
+.gradient-name {
+    background: linear-gradient(100deg, #45dbe8, #548dff, #a28aff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.role {
+    margin-top: 25px;
+    font-size: 23px;
+    color: #d9e5ee;
+}
+
+.role span {
+    color: var(--cyan);
+}
+
+.intro {
+    max-width: 760px;
+    margin-top: 30px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.highlight {
+    color: #4be0c1;
+    font-weight: bold;
+}
+
+/* =========================
+   7. BUTTONS
+========================= */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    color: #041019;
+    background: linear-gradient(110deg, #4de0e5, #629aff);
+    box-shadow: 0 5px 25px rgba(66, 217, 232, 0.17);
+}
+
+.btn-secondary {
+    color: #b9c9d8;
+    border: 1px solid #294456;
+    background: rgba(12, 25, 36, 0.8);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(66, 217, 232, 0.2);
+}
+
+/* =========================
+   8. STATS
+========================= */
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 65px;
+    margin-top: 65px;
+}
+
+.stat h2 {
+    color: white;
+    font-size: 38px;
+    line-height: 1.3;
+}
+
+.stat p {
+    color: #8299a9;
+    font-family: monospace;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+/* =========================
+   9. COMMON SECTIONS
+========================= */
+
+.section {
+    padding: 65px 0;
+    scroll-margin-top: 75px;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading span {
+    color: var(--cyan);
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.section-heading h2 {
+    color: white;
+    font-size: 36px;
+    margin-top: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   10. PROFILE PHOTO
+========================= */
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.profile-card img {
+    width: 145px;
+    height: 145px;
+    min-width: 145px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 3px solid var(--cyan);
+    box-shadow: 0 0 22px rgba(66, 217, 232, 0.25);
+}
+
+.profile-info h3 {
+    font-size: 27px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.profile-info p {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+/* =========================
+   11. ABOUT ME
+========================= */
+
+.about-text {
+    color: #b7c8d4;
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* =========================
+   12. ACHIEVEMENTS
+========================= */
+
+.achievement-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px;
+}
+
+.achievement-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 19px;
+    padding: 17px;
+    transition: 0.3s;
+}
+
+.achievement-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+    box-shadow: 0 8px 25px rgba(66, 217, 232, 0.1);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #080f17;
+    border-radius: 12px;
+}
+
+.achievement-card h3 {
+    color: white;
+    font-size: 20px;
+    margin-top: 14px;
+}
+
+.achievement-card p {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* =========================
+   13. SKILLS
+========================= */
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-4px);
+}
+
+.skill-card h3 {
+    color: var(--cyan);
+    margin-bottom: 13px;
+}
+
+.skill-card ul {
+    padding-left: 20px;
+    color: #b4c5d2;
+}
+
+.skill-card li {
+    margin: 8px 0;
+}
+
+/* =========================
+   14. EDUCATION
+========================= */
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(12, 25, 36, 0.9);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.education-table th,
+.education-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #263c4c;
+}
+
+.education-table th {
+    background: #102635;
+    color: var(--cyan);
+}
+
+.education-table td {
+    color: #c0d0dc;
+}
+
+/* =========================
+   15. INTERESTS
+========================= */
+
+.interest-list {
+    padding-left: 25px;
+    color: #b8c9d5;
+}
+
+.interest-list li {
+    margin: 11px 0;
+    font-size: 16px;
+}
+
+/* =========================
+   16. LOCATION MAP
+========================= */
+
+.map-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 17px;
+}
+
+.map-card iframe {
+    width: 100%;
+    height: 370px;
+    border: 0;
+    border-radius: 13px;
+}
+
+.map-card p {
+    color: #b5c6d3;
+    margin: 14px 5px 5px;
+}
+
+/* =========================
+   17. CONTACT
+========================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px;
+}
+
+.contact-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 21px;
+}
+
+.contact-item h4 {
+    color: #7e9aaa;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 7px;
+}
+
+.contact-item p,
+.contact-item a {
+    color: #d1dce5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+    color: var(--cyan);
+}
+
+/* =========================
+   18. SOCIAL LINKS
+========================= */
+
+.connect-box {
+    margin-top: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 24px;
+}
+
+.connect-box h4 {
+    color: #7e9aaa;
+    font-family: monospace;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.connect-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.connect-links a {
+    padding: 10px 16px;
+    border: 1px solid #294456;
+    border-radius: 11px;
+    text-decoration: none;
+    color: #b7c8d4;
+    transition: 0.3s;
+}
+
+.connect-links a:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    background: rgba(66, 217, 232, 0.07);
+}
+
+/* =========================
+   19. FOOTER
+========================= */
+
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 15px;
+    text-align: center;
+    color: #8297a7;
+    background: rgba(5, 11, 18, 0.95);
+}
+
+.footer strong {
+    color: var(--cyan);
+}
+
+/* =========================
+   20. RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 850px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body::before,
+    body::after {
+        width: 45px;
+        opacity: 0.4;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .navbar {
+        padding: 14px 10px;
+    }
+
+    .navbar h2 {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 9px 13px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .quote-section {
+        padding-top: 42px;
+    }
+
+    .quote-section h2 {
+        font-size: 18px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+        letter-spacing: -2px;
+    }
+
+    .hello {
+        font-size: 13px;
+    }
+
+    .role {
+        font-size: 19px;
+    }
+
+    .intro {
+        font-size: 15px;
+        margin-top: 22px;
+    }
+
+    .hero-buttons {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 11px 15px;
+        font-size: 13px;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 45px;
+    }
+
+    .stat h2 {
+        font-size: 31px;
+    }
+
+    .section {
+        padding: 48px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 23px;
+    }
+
+    .profile-card img {
+        width: 125px;
+        height: 125px;
+        min-width: 125px;
+    }
+
+    .achievement-container,
+    .skill-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-card img {
+        height: 205px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .education-table th,
+    .education-table td {
+        padding: 10px 7px;
+        font-size: 11px;
+    }
+
+    .map-card iframe {
+        height: 290px;
+    }
+
+    .connect-links {
+        gap: 9px;
+    }
+
+    .connect-links a {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <h2>Samriddhi Purwar</h2>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#about">About</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- =========================
+     FAVOURITE QUOTE
+========================= -->
+
+<section class="quote-section">
+
+    <p class="quote-label">A Thought I Live By</p>
+
+    <div class="quote-line"></div>
+
+    <h2>
+        "Life is very complicated. Don't try to find all the answers,
+        because when you find them, life changes the questions."
+    </h2>
+
+    <div class="quote-line"></div>
+
+</section>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="hello">— HELLO, WORLD —</p>
+
+        <h1>
+            Samriddhi<br>
+            <span class="gradient-name">Purwar</span>
+        </h1>
+
+        <p class="role">
+            <span>→</span> Computer Science Undergraduate
+        </p>
+
+        <p class="intro">
+            CS undergraduate at
+            <span class="highlight">IIIT Raichur</span>,
+            exploring technology, programming and creative ideas.
+            Always learning, growing and working towards becoming
+            a skilled Software Engineer.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#achievements" class="btn btn-primary">
+                View Achievements →
+            </a>
+
+            <a href="#education" class="btn btn-secondary">
+                My Education
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Say Hello
+            </a>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>JEE</h2>
+                <p>QUALIFIED</p>
+            </div>
+
+            <div class="stat">
+                <h2>IIIT</h2>
+                <p>RAICHUR</p>
+            </div>
+
+            <div class="stat">
+                <h2>CSE</h2>
+                <p>UNDERGRAD</p>
+            </div>
+
+            <div class="stat">
+                <h2>2030</h2>
+                <p>GRADUATING</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE PHOTO
+========================= -->
+
+<section class="section" id="profile">
+
+    <div class="section-heading">
+        <span>01 / MY PROFILE</span>
+        <h2>Meet Me</h2>
+    </div>
+
+    <div class="profile-card">
+
+        <img src="profile.jpg" alt="Samriddhi Purwar">
+
+        <div class="profile-info">
+
+            <h3>Samriddhi Purwar</h3>
+
+            <p class="profile-role">
+                Computer Science Undergraduate
+            </p>
+
+            <p>
+                B.Tech CSE student at IIIT Raichur.
+                Passionate about technology, creativity,
+                learning and personal growth.
+            </p>
+
+            <a href="#about" class="btn btn-primary">
+                Know More About Me →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT ME
+========================= -->
+
+<section class="section" id="about">
+
+    <div class="section-heading">
+        <span>02 / INTRODUCTION</span>
+        <h2>A Little About Me</h2>
+    </div>
+
+    <div class="card about-text">
+
+        <p>
+            I am <strong>Samriddhi Purwar</strong>, a first-year
+            B.Tech student in Computer Science and Engineering
+            at IIIT Raichur.
+        </p>
+
+        <br>
+
+        <p>
+            I completed my Class 10 and Class 12 from
+            Pt. Deen Dayal Upadhyay Sanatan Dharma
+            Vidyalaya, Kanpur.
+        </p>
+
+        <br>
+
+        <p>
+            I am enthusiastic about technology, creativity,
+            communication and continuous learning.
+            I enjoy exploring new ideas and developing
+            my technical and personal skills.
+        </p>
+
+        <br>
+
+        <p>
+            My ambition is to become a Software Engineer
+            and create meaningful solutions through technology.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ACHIEVEMENTS
+========================= -->
+
+<section class="section" id="achievements">
+
+    <div class="section-heading">
+        <span>03 / MILESTONES</span>
+        <h2>My Achievements</h2>
+        <p>A few important milestones from my journey.</p>
+    </div>
+
+    <div class="achievement-container">
+
+        <div class="achievement-card">
+
+            <img src="ssb.jpg" alt="Indian Navy SSB achievement">
+
+            <h3>Indian Navy SSB</h3>
+
+            <p>
+                Screened In at the Indian Navy SSB interview.
+            </p>
+
+        </div>
+
+
+        <div class="achievement-card">
+
+            <img src="jee-main.jpg" alt="JEE Main achievement">
+
+            <h3>JEE Main Qualifier</h3>
+
+            <p>
+                Qualified JEE Main and secured admission
+                to IIIT Raichur.
+            </p>
+
+        </div>
+
+
+        <div class="achievement-card">
+
+            <img src="class 10.jpg" alt="Class 10 achievement">
+
+            <h3>Class 10 Achievement</h3>
+
+            <p>
+                Received a school award for scoring
+                above 90% in Class 10.
+            </p>
+
+        </div>
+
+
+        <div class="achievement-card">
+
+            <img src="topper.jpg" alt="Academic Excellence award">
+
+            <h3>Academic Excellence</h3>
+
+            <p>
+                Recognised by my school for academic
+                performance and dedication.
+            </p>
+
+        </div>
+
+
+        <div class="achievement-card">
+
+            <img src="iiitr-award.jpg" alt="IIIT Raichur admission award">
+
+            <h3>Academic Achievement</h3>
+
+            <p>
+                Received a school award for securing
+                admission to IIIT Raichur.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section class="section" id="skills">
+
+    <div class="section-heading">
+        <span>04 / WHAT I DO</span>
+        <h2>Skills & Abilities</h2>
+    </div>
+
+    <div class="skill-grid">
+
+        <div class="skill-card">
+
+            <h3>Technical Skills</h3>
+
+            <ul>
+                <li>C Programming</li>
+                <li>Python</li>
+                <li>HTML Basics</li>
+                <li>CSS Basics</li>
+                <li>Problem Solving</li>
+            </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <h3>Creative Skills</h3>
+
+            <ul>
+                <li>Dancing</li>
+                <li>Basic Kathak</li>
+                <li>Creative Thinking</li>
+                <li>Reading Mythological Books</li>
+            </ul>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <h3>Communication</h3>
+
+            <ul>
+                <li>Debating</li>
+                <li>Public Speaking</li>
+                <li>Communication Skills</li>
+                <li>Teamwork</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<section class="section" id="education">
+
+    <div class="section-heading">
+        <span>05 / ACADEMIC JOURNEY</span>
+        <h2>Education</h2>
+    </div>
+
+    <div class="card">
+
+        <table class="education-table">
+
+            <tr>
+                <th>Qualification</th>
+                <th>Institution</th>
+            </tr>
+
+            <tr>
+                <td>Class 10</td>
+                <td>
+                    Pt. Deen Dayal Upadhyay
+                    Sanatan Dharma Vidyalaya, Kanpur
+                </td>
+            </tr>
+
+            <tr>
+                <td>Class 12</td>
+                <td>
+                    Pt. Deen Dayal Upadhyay
+                    Sanatan Dharma Vidyalaya, Kanpur
+                </td>
+            </tr>
+
+            <tr>
+                <td>B.Tech CSE</td>
+                <td>
+                    Indian Institute of Information Technology,
+                    Raichur
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTERESTS
+========================= -->
+
+<section class="section" id="interests">
+
+    <div class="section-heading">
+        <span>06 / BEYOND TECHNOLOGY</span>
+        <h2>My Interests</h2>
+    </div>
+
+    <div class="card">
+
+        <ol class="interest-list">
+            <li>Reading mythological books</li>
+            <li>Bollywood dancing</li>
+            <li>Learning programming languages</li>
+            <li>Debating and public speaking</li>
+            <li>Exploring new technologies</li>
+        </ol>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COLLEGE LOCATION
+========================= -->
+
+<section class="section" id="location">
+
+    <div class="section-heading">
+        <span>07 / FIND ME</span>
+        <h2>My College Location</h2>
+        <p>Indian Institute of Information Technology, Raichur</p>
+    </div>
+
+    <div class="map-card">
+
+        <iframe
+            src="https://maps.google.com/maps?q=Indian%20Institute%20of%20Information%20Technology%20Raichur&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            title="Map showing IIIT Raichur"
+            loading="lazy"
+            allowfullscreen>
+        </iframe>
+
+        <p>
+            <strong>IIIT Raichur</strong><br>
+            Raichur, Karnataka, India
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="section" id="contact">
+
+    <div class="section-heading">
+        <span>08 / GET IN TOUCH</span>
+        <h2>Contact & Connect</h2>
+        <p>Let's connect, learn and grow together.</p>
+    </div>
+
+
+    <div class="contact-grid">
+
+        <div class="contact-item">
+
+            <h4>LOCATION</h4>
+
+            <p>Kanpur, Uttar Pradesh • IIIT Raichur</p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <h4>EMAIL</h4>
+
+            <p>
+                <a href="mailto:samriddhipurwar7c@gmail.com">
+                    samriddhipurwar7c@gmail.com
+                </a>
+            </p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <h4>DEGREE</h4>
+
+            <p>B.Tech CSE, IIIT Raichur</p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <h4>GRADUATING</h4>
+
+            <p>2030</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="connect-box">
+
+        <h4>CONNECT</h4>
+
+        <div class="connect-links">
+
+            <a
+                href="https://www.linkedin.com/in/samriddhi-purwar-836861429/"
+                target="_blank">
+                LinkedIn ↗
+            </a>
+
+            <a href="https://github.com/login/oauth/authorize?client_id=3f8b8834a91f0caad392&code_challenge=gCKPwkDiuyd_OWrJZ_cq60fOVYAGpN22V2QUPk-uLqE&code_challenge_method=S256&nonce=q6_eDqkyFhQtSITua9mMLw&redirect_uri=github%3A%2F%2Fcom.github.android%2Foauth&response_type=code&scope=user+repo+notifications+admin%3Aorg+read%3Adiscussion+user%3Aassets+project+workflow&skip_account_picker=true&state=5sZ23jDplTcNl2IZRDxDxA" target="_blank">
+                GitHub ↗
+            </a>
+
+            <a href="https://leetcode.com/u/samriddhi-purwar" target="_blank">
+                LeetCode ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <p>
+        Designed with HTML & CSS by
+        <strong>Samriddhi Purwar</strong>
+    </p>
+
+    <p>© 2026 | Personal Portfolio</p>
+
+</footer>
+
+</body>
+</html>
